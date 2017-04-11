@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Request permission to save videos in external storage
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_RQ);
         }
+
     }
+
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.launchCameraStillshot) {
-            Intent intent = new Intent(this, FragmentActivity.class);
+            Intent intent = new Intent(this, PlayVideo.class);
             startActivity(intent);
             return;
         }
@@ -89,11 +91,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Received recording or error from MaterialCamera
         if (requestCode == CAMERA_RQ) {
+            Toast.makeText(getApplicationContext(),"a",Toast.LENGTH_SHORT).show();
             if (resultCode == RESULT_OK) {
+                Toast.makeText(getApplicationContext(),"b",Toast.LENGTH_SHORT).show();
                 final File file = new File(data.getData().getPath());
                 Toast.makeText(this, String.format("Saved to: %s, size: %s",
                         file.getAbsolutePath(), fileSize(file)), Toast.LENGTH_LONG).show();
             } else if (data != null) {
+                Toast.makeText(getApplicationContext(),"c",Toast.LENGTH_SHORT).show();
                 Exception e = (Exception) data.getSerializableExtra(MaterialCamera.ERROR_EXTRA);
                 if (e != null) {
                     e.printStackTrace();
@@ -102,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -49,4 +49,8 @@ dependencies {
     compile 'com.afollestad:material-camera:0.4.4'
 //    https://github.com/afollestad/easy-video-player
     compile 'com.afollestad:easyvideoplayer:0.3.0'
+//    http://jcodec.org/
+    compile 'org.jcodec:jcodec-android:0.1.9'
+
+
 }
