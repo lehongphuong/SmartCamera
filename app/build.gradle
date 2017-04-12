@@ -28,6 +28,7 @@ android {
         }
     }
 
+    sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jniLibs/'] } }
 }
 
 repositories {
@@ -38,19 +39,17 @@ repositories {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
-
-//    https://github.com/afollestad/material-camera
+    //    https://github.com/afollestad/material-camera
     compile 'com.afollestad:material-camera:0.4.4'
-//    https://github.com/afollestad/easy-video-player
+    //    https://github.com/afollestad/easy-video-player
     compile 'com.afollestad:easyvideoplayer:0.3.0'
-//    http://jcodec.org/
+    //    http://jcodec.org/
     compile 'org.jcodec:jcodec-android:0.1.9'
-
-
+    compile project(':openCVLibrary2411')
 }

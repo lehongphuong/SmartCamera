@@ -9,10 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialcamera.MaterialCamera;
+
+import org.opencv.android.OpenCVLoader;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -21,6 +24,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final static int CAMERA_RQ = 6969;
     private final static int PERMISSION_RQ = 84;
+
+    private final static String TAG ="MainActivity";
+
+    static {
+        if(!OpenCVLoader.initDebug()){
+            Log.d(TAG,"Open cv not loader");
+        }else {
+            Log.d(TAG,"Open cv loader");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

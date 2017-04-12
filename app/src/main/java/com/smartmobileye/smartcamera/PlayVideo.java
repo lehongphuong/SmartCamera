@@ -73,7 +73,7 @@ public class PlayVideo extends AppCompatActivity implements EasyVideoCallback {
                 time += 10;
                 //frames is process at there .......phuong ------------------------------------------
                 Bitmap bmFrame = mediaMetadataRetriever
-                        .getFrameAtTime(500 * 1000);
+                        .getFrameAtTime(500 * time); ///micro second in your video x
                 enc.encodeImage(bmFrame);
             }
             enc.finish();
